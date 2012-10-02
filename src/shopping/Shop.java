@@ -12,19 +12,19 @@ public class Shop {
                      * All of the products to the array. *
                      *************************************/ 
 
-        // We don't want null pointer exceptions, so put default values into array (clever me).
-        for(int i = 0; i < 3000; i++) {
-            all[i] = 0.00; // If a product does not exist, it's price is 0.00.
-        }
-        
-        all[1000]      = 1.00;
-        all[1001]    = 100.00;
-        all[1002]      = 1.00;
-        all[1003]      = 0.99;
-        all[1100]     = 20.99;
-        all[1200]      = 3.30;
-        all[2000]      = 5.50;
-        all[2001]     = 99.00;
+                    // We don't want null pointer exceptions, so put default values into array (clever me).
+                    for(int i = 0; i < 3000; i++) {
+                        all[i] = 0.00; // If a product does not exist, it's price is 0.00.
+                    }
+
+                            all[1000]      = 1.00;
+                            all[1001]    = 100.00;
+                            all[1002]      = 1.00;
+                            all[1003]      = 0.99;
+                            all[1100]     = 20.99;
+                            all[1200]      = 3.30;
+                            all[2000]      = 5.50;
+                            all[2001]     = 99.00;
     }
     
     /*                _.-----.._                           
