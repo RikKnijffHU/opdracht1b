@@ -76,7 +76,8 @@ public class Shop {
       // If the given products exist, calculate the total sum.
       double lol = 0.00;
       
-        for (int i = 0; i < ids.length; i++) {
+        for (int i = 0; i < ids.length; i++) 
+       {
           if(all[ids[i]] != 0.00) { // Doublecheck the product ids, just in case.
                 double a = all[ids[i]]; // Get the price.
                 lol = lol + a;          // Add the price to the total lol. Err, to the total sum.
