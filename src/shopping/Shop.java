@@ -5,18 +5,21 @@ package shopping;
  */
 public class Shop {
     
-    Double[] all = new Double[3000];
+    Double[] all = new Double[3000]; // This will be the products. Make sure there is plenty of space for them.
     
     public Shop() {
-                    /*************************************
-                     * All of the products to the array. *
-                     *************************************/ 
+        
+        /*************************************
+         * All of the products to the array. *
+         *************************************/ 
 
-                    // We don't want null pointer exceptions, so put default values into array (clever me).
-                    for(int i = 0; i < 3000; i++) {
-                        all[i] = 0.00; // If a product does not exist, it's price is 0.00.
-                    }
+        // We don't want null pointer exceptions, so put default values into array (clever me).
+        for(int i = 0; i < 3000; i++) {
+            all[i] = 0.00; // If a product does not exist, it's price is 0.00.
+        }
 
+                    
+                    // Add a price to an ID, i.e. a product.
                             all[1000]      = 1.00;
                             all[1001]    = 100.00;
                             all[1002]      = 1.00;
@@ -51,6 +54,8 @@ public class Shop {
      *                                                                                  *
      * Parameters:                                                                      *
      *   ids: identifiers for the products                                              *
+     * Returns:                                                                         *
+     *   the total price of products                                                    *
      ************************************************************************************/
     public double do_it(int[] ids) {
         
@@ -73,11 +78,12 @@ public class Shop {
         }
         
         
-      // If the given products exist, calculate the total sum.
+      // If the given products exist, we then calculate the total sum.
       double lol = 0.00;
       
+      //Go through the given products again.
         for (int i = 0; i < ids.length; i++) 
-       {
+        {
           if(all[ids[i]] != 0.00) { // Doublecheck the product ids, just in case.
                 double a = all[ids[i]]; // Get the price.
                 lol = lol + a;          // Add the price to the total lol. Err, to the total sum.
@@ -85,7 +91,8 @@ public class Shop {
           }
         }
         
-        return lol;
+        
+        return lol; // All done! Return the sum.
     }
     
 }
