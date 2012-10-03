@@ -62,16 +62,25 @@ public class Shop {
         System.out.println("DEBUG (Hello from Fartin): " + ids.length); // For debugging purposes.
         
         //First, we will search if cashier has made a typo with a product identifier.
-        boolean found = true;
+        boolean found_boolean = true;
         for (int i = 0; i < ids.length; i++) {
             for (int j = 0; j < 3000; j++)
                 if (j == ids[i] && all[j] == 0.00) {
-                    found = false; break;
+                    found_boolean = false; break;
                 }
         }
         
+        /* Doesn't work.
+        for (int i = 0; i < ids.length; i++) {
+            for (int j = 0; j < 3000; j++)
+                if (j == ids[i] && all[j] == 0.00) {
+                    found = true;
+                }
+        }*/
+        
+        
         // We will go back if product is not found.
-      if (found == true) {
+      if (found_boolean == true) {
           // Continue if products are actually found.
         } else { 
             return -1.0; // So we will return -1 if error is found.
