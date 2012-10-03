@@ -26,14 +26,10 @@ public class Shop {
     public double calculateTotalPrice(int[] ids) throws ProductNotFoundException {
         ArrayList<Product> products = productRepository.findByIds(ids);
         
-        System.out.println(ids.length);
-        System.out.println(products.size());
-        
         if (products.size() != ids.length) {
             throw new ProductNotFoundException();
         }
         
         return priceService.calculateTotal(products);
-    }
-    
+    }    
 }
