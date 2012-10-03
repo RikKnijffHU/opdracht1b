@@ -1,6 +1,7 @@
 package com.shop;
 
 import com.shop.product.ProductRepository;
+import com.shop.price.PriceService;
 
 /**
  * @author Fartin Mowler, Lead Software Architect, THE BEST CODER, 1996
@@ -16,7 +17,7 @@ public class Main {
      *******************************************************/
     public static void main(String[] args) 
     {
-        Shop shop = new Shop(new ProductRepository());
+        Shop shop = new Shop(new ProductRepository(), new PriceService());
         
         int[] a = {1000, 1001, 2000};
         int[] b = {1002, 2001};

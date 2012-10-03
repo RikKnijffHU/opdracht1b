@@ -1,12 +1,11 @@
 package com.shop;
 
 import com.shop.Shop;
+import com.shop.product.ProductRepository;
 import com.shop.product.ProductNotFoundException;
+import com.shop.price.PriceService;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.internal.runners.statements.ExpectException;
-import shopping.ProductNotFoundException;
-import shopping.Shop;
 import static org.junit.Assert.*;
 
 public class ShopTest {
@@ -16,16 +15,14 @@ public class ShopTest {
     
     @Before
     public void setUp() {
-        target = new Shop();
+        target = new Shop(new ProductRepository(), new PriceService());
     }
 
     @Test(expected = ProductNotFoundException.class)
-    public void shouldThrowExceptionOneIfEvenOneOfTheProductsIsNotFound() {
+    public void shouldThrowExceptionOneIfEvenOneOfTheProductsIsNotFound() throws ProductNotFoundException {
         int[] ids = {9999, 2358, 1000};
         
-        try { 
-            target.calculateTotalPrice(ids);
-        } catch (Exception e) {}
+        target.calculateTotalPrice(ids);
     }
     
     @Test
@@ -40,15 +37,13 @@ public class ShopTest {
     }
     
     @Test
-    public void shouldSumPriceOfProducts() {
+    public void shouldSumPriceOfProducts() throws ProductNotFoundException {
         int[] ids = {1000, 1001, 2000};
-                
-        try { 
-            assertEquals(
-                1.00 + 100.00 + 5.50,
-                target.calculateTotalPrice(ids),
-                delta
-            );
-        } catch (Exception e) {}
+            
+        assertEquals(
+            1.00 + 100.00 + 5.50,
+            target.calculateTotalPrice(ids),
+            delta
+        );
     }
 }

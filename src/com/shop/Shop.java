@@ -1,19 +1,21 @@
 package com.shop;
 
-import java.util.ArrayList;
 import com.shop.product.Product;
 import com.shop.product.ProductNotFoundException;
 import com.shop.product.ProductRepository;
+import com.shop.price.PriceService;
+import java.util.ArrayList;
 
 /**
  * @author Fartin Mowler, THE MOST AWESOME CODER (in the world)
  */
 public class Shop {
-    
     private ProductRepository productRepository;
+    private PriceService priceService;
     
-    public Shop(ProductRepository productRepository) {
+    public Shop(ProductRepository productRepository, PriceService priceService) {
         this.productRepository = productRepository;
+        this.priceService = priceService;
     }
     
     /**
@@ -22,15 +24,16 @@ public class Shop {
      * @throws ProductNotFoundException
      */
     public double calculateTotalPrice(int[] ids) throws ProductNotFoundException {
-        ArrayList<Product> products = productRepository.findAll();
+        ArrayList<Product> products = productRepository.findByIds(ids);
         
-        if (products.isEmpty()) {
+        System.out.println(ids.length);
+        System.out.println(products.size());
+        
+        if (products.size() != ids.length) {
             throw new ProductNotFoundException();
         }
         
-        // double totalPrice = PriceService.calculateTotal(products);
-        
-        return totalPrice; // All done! Return the sum.
+        return priceService.calculateTotal(products);
     }
     
 }
